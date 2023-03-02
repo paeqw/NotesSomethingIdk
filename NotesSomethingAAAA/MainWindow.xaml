@@ -11,11 +11,13 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <TextBox x:Name="TitleTextBox" Grid.Row="0" Margin="5" />
         <TextBox x:Name="NoteTextBox" Grid.Row="1" Margin="5" />
-        <Button x:Name="SaveButton" Grid.Row="2" Margin="5,35,5,5" Click="SaveButton_Click">Save</Button>
-        <ListBox x:Name="NotesListBox" Grid.Row="3" Margin="5" SelectionChanged="NotesListBox_SelectionChanged"/>
+        <Button Content="Save" x:Name="SaveButton" Grid.Row="2" Margin="5,35,5,5" Click="SaveButton_Click"/>
+        <Button x:Name="modifyButton" Content="Modify" Grid.Row="3" Click="modifyButton_Click"/>
+        <ListBox x:Name="NotesListBox" Grid.Row="4" Margin="5" SelectionChanged="NotesListBox_SelectionChanged"/>
     </Grid>
 </Window>

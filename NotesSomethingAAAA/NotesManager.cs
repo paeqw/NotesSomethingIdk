@@ -18,18 +18,9 @@ namespace NotesSomethingAAAA
 
         public Note AddNote(string title, string content)
         {
-            Note newNote = new Note()
-            {
-                Title = title,
-                Content = content
-            };
-
-            // Add new note to list
+            Note newNote = new Note(title, content);
             Notes.Add(newNote);
-
-            // Save notes to file
             SaveNotes();
-
             return newNote;
         }
 
@@ -60,6 +51,18 @@ namespace NotesSomethingAAAA
                 lines.Add(line);
             }
             File.WriteAllLines(notesFilePath, lines);
+        }
+        
+        public void ModifyNoteTitle(Note note, string newTitle)
+        {
+            note.Title = newTitle;
+            SaveNotes();
+        }
+
+        public void ModifyNoteContent(Note note, string newContent)
+        {
+            note.Content = newContent;
+            SaveNotes();
         }
     }
 }

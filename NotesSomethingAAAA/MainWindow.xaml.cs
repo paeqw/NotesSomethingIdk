@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace NotesSomethingAAAA
 {
@@ -25,7 +12,6 @@ namespace NotesSomethingAAAA
         public MainWindow()
         {
             InitializeComponent();
-
             notesManager = new NotesManager();
             notesManager.LoadNotes();
             NotesListBox.ItemsSource = notesManager.Notes;
@@ -34,12 +20,8 @@ namespace NotesSomethingAAAA
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
             Note newNote = notesManager.AddNote(TitleTextBox.Text, NoteTextBox.Text);
-
             NotesListBox.ItemsSource = null;
-
-
             NotesListBox.ItemsSource = notesManager.Notes;
-
             TitleTextBox.Text = "";
             NoteTextBox.Text = "";
         }
@@ -52,6 +34,18 @@ namespace NotesSomethingAAAA
                 TitleTextBox.Text = selectedNote.Title;
                 NoteTextBox.Text = selectedNote.Content;
             }
+        }
+
+        private void modifyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Note selected = (Note)NotesListBox.SelectedItems;
+            if(selected == null)
+            {
+                MessageBox.Show("Select note to modify it");
+                return;
+            }
+            string newTitle = NoteTextBox.Text;
+            notesManager.ModifyNoteContent(selected, newTitle)
         }
     }
 }
