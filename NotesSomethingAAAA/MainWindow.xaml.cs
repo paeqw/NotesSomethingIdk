@@ -36,6 +36,8 @@ namespace NotesSomethingAAAA
             Note newNote = notesManager.AddNote(TitleTextBox.Text, NoteTextBox.Text);
 
             NotesListBox.ItemsSource = null;
+
+
             NotesListBox.ItemsSource = notesManager.Notes;
 
             TitleTextBox.Text = "";
