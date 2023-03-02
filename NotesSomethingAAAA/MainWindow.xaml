@@ -5,19 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotesSomethingAAAA"
         mc:Ignorable="d"
-        Title="NotesApp" Height="350" Width="525">
+        Title="NotesApp" Height="450" Width="525">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <TextBox x:Name="TitleTextBox" Grid.Row="0" Margin="5" />
-        <TextBox x:Name="NoteTextBox" Grid.Row="1" Margin="5" />
-        <Button Content="Save" x:Name="SaveButton" Grid.Row="2" Margin="5,35,5,5" Click="SaveButton_Click"/>
-        <Button x:Name="modifyButton" Content="Modify" Grid.Row="3" Click="modifyButton_Click"/>
-        <ListBox x:Name="NotesListBox" Grid.Row="4" Margin="5" SelectionChanged="NotesListBox_SelectionChanged"/>
+        <StackPanel Grid.Row="0">
+            <Label Content="Tytuł" Grid.Row="0"/>
+            <TextBox x:Name="TitleTextBox" Grid.Row="1" Margin="5" />
+            <Label Content="Wiadomość Notatki" Grid.Row="2"/>
+            <TextBox x:Name="NoteTextBox" Grid.Row="3" Margin="5" />
+            <Button Content="Save" x:Name="SaveButton" Grid.Row="4" Margin="5,35,5,5" Click="SaveButton_Click"/>
+            <Button x:Name="modifyButton" Content="Modify" Margin="6" Grid.Row="5" Click="modifyButton_Click"/>
+        </StackPanel>
+        <ListBox x:Name="NotesListBox" Grid.Row="1" Margin="5" SelectionChanged="NotesListBox_SelectionChanged"/>
     </Grid>
 </Window>

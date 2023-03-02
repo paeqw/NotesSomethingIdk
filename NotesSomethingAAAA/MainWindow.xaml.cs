@@ -38,14 +38,16 @@ namespace NotesSomethingAAAA
 
         private void modifyButton_Click(object sender, RoutedEventArgs e)
         {
-            Note selected = (Note)NotesListBox.SelectedItems;
+            Note? selected = NotesListBox.SelectedItem as Note;
             if(selected == null)
             {
-                MessageBox.Show("Select note to modify it");
-                return;
+                MessageBox.Show("Select note to modify it");                return;
             }
-            string newTitle = NoteTextBox.Text;
-            notesManager.ModifyNoteContent(selected, newTitle)
+            string newTitle = TitleTextBox.Text; 
+            string newContent = NoteTextBox.Text;
+            notesManager.ModifyNote(selected, newTitle, newContent);
+
+            NotesListBox.Items.Refresh();
         }
     }
 }

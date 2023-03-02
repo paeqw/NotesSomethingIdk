@@ -53,16 +53,13 @@ namespace NotesSomethingAAAA
             File.WriteAllLines(notesFilePath, lines);
         }
         
-        public void ModifyNoteTitle(Note note, string newTitle)
+        public void ModifyNote(Note note, string newTitle,string newContent)
         {
             note.Title = newTitle;
-            SaveNotes();
-        }
-
-        public void ModifyNoteContent(Note note, string newContent)
-        {
             note.Content = newContent;
             SaveNotes();
         }
+
+        
     }
 }
