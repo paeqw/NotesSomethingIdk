@@ -41,7 +41,8 @@ namespace NotesSomethingAAAA
             Note? selected = NotesListBox.SelectedItem as Note;
             if(selected == null)
             {
-                MessageBox.Show("Select note to modify it");                return;
+                MessageBox.Show("Select note to modify it");                
+                return;
             }
             string newTitle = TitleTextBox.Text; 
             string newContent = NoteTextBox.Text;
