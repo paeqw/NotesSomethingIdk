@@ -15,6 +15,7 @@ namespace NotesSomethingAAAA
 
             Notes = new List<Note>();
         }
+        
 
         public Note AddNote(string title, string content)
         {
@@ -53,6 +54,12 @@ namespace NotesSomethingAAAA
             File.WriteAllLines(notesFilePath, lines);
         }
         
+        public void DeleteNote(Note note)
+        {
+            Notes.Remove(note);
+            SaveNotes();
+        }
+
         public void ModifyNote(Note note, string newTitle,string newContent)
         {
             note.Title = newTitle;

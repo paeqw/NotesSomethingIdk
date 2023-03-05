@@ -5,20 +5,28 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotesSomethingAAAA"
         mc:Ignorable="d"
-        Title="NotesApp" Height="450" Width="525">
+        Title="NotesApp" Height="525" Width="525">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="0">
-            <Label Content="Tytuł" Grid.Row="0"/>
-            <TextBox x:Name="TitleTextBox" Grid.Row="1" Margin="5" />
-            <Label Content="Wiadomość Notatki" Grid.Row="2"/>
-            <TextBox x:Name="NoteTextBox" Grid.Row="3" Margin="5" />
-            <Button Content="Save" x:Name="SaveButton" Grid.Row="4" Margin="5,35,5,5" Click="SaveButton_Click"/>
-            <Button x:Name="modifyButton" Content="Modify" Margin="6" Grid.Row="5" Click="modifyButton_Click"/>
+            <!--
+            nie wiem jaki jeszcze degisn cos sie wymysli 
+            (moze sie usunie textboxy ale jescze niewiem a a a a a a a a) 
+            -->
+            <StackPanel x:Name="stackPanel">
+                <Label Content="Tytuł" Grid.Row="0"/>
+                <TextBlock x:Name="TitleTextBox" Margin="5" />
+                <Label Content="Wiadomość Notatki"/>
+                <TextBlock x:Name="NoteTextBox" Margin="5" />
+            </StackPanel>
+            
+            <Button Content="Add new" x:Name="SaveButton" Margin="5,5,5,5" Click="SaveButton_Click"/>
+            <Button x:Name="modifyButton" Content="Modify" Margin="5,5,5,5" Click="modifyButton_Click"/>
+            <Button x:Name="deleteButton" Content="Delete selected note" Margin="5,5,5,5" Click="deleteButton_Click" />
         </StackPanel>
-        <ListBox x:Name="NotesListBox" Grid.Row="1" Margin="5" SelectionChanged="NotesListBox_SelectionChanged"/>
+        <ListBox x:Name="NotesListBox" Grid.Row="1" Margin="5" SelectionChanged="NotesListBox_SelectionChanged" />
     </Grid>
 </Window>

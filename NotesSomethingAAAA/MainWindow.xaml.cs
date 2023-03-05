@@ -15,39 +15,59 @@ namespace NotesSomethingAAAA
             notesManager = new NotesManager();
             notesManager.LoadNotes();
             NotesListBox.ItemsSource = notesManager.Notes;
+            stackPanel.Visibility = Visibility.Hidden;
+            stackPanel.Height = 0;
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            Note newNote = notesManager.AddNote(TitleTextBox.Text, NoteTextBox.Text);
-            NotesListBox.ItemsSource = null;
-            NotesListBox.ItemsSource = notesManager.Notes;
-            TitleTextBox.Text = "";
-            NoteTextBox.Text = "";
+            AddEditNoteWindow addNoteWindow = new AddEditNoteWindow(notesManager);
+            addNoteWindow.ShowDialog();
+            NotesListBox.Items.Refresh();
         }
 
         private void NotesListBox_SelectionChanged(object sender, RoutedEventArgs e)
         {
-            Note selectedNote = (Note)NotesListBox.SelectedItem;
+            stackPanel.Visibility = Visibility.Visible;
+            stackPanel.Height = double.NaN;
+            Note? selectedNote = NotesListBox.SelectedItem as Note;
             if (selectedNote != null)
             {
                 TitleTextBox.Text = selectedNote.Title;
                 NoteTextBox.Text = selectedNote.Content;
             }
+            else
+            {
+                stackPanel.Visibility = Visibility.Hidden;
+                stackPanel.Height = 0;
+            }
         }
 
         private void modifyButton_Click(object sender, RoutedEventArgs e)
         {
-            Note? selected = NotesListBox.SelectedItem as Note;
-            if(selected == null)
+            // pytajnik -> moze byc null
+            Note? selectedNote = NotesListBox.SelectedItem as Note;
+            if (selectedNote == null)
             {
-                MessageBox.Show("Select note to modify it");                
+                MessageBox.Show("a a a a chujjjjjj a da a a aa a a a  a ive lost my mid a a a a a");
                 return;
             }
-            string newTitle = TitleTextBox.Text; 
-            string newContent = NoteTextBox.Text;
-            notesManager.ModifyNote(selected, newTitle, newContent);
+            AddEditNoteWindow editNoteWindow = new AddEditNoteWindow(notesManager);
+            editNoteWindow.SetNote(selectedNote);
+            editNoteWindow.ShowDialog();
+            NotesListBox.Items.Refresh();
+        }
 
+        private void deleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            Note? selectedNote = NotesListBox.SelectedItem as Note;
+
+            if (selectedNote == null)
+            {
+                MessageBox.Show("a a a a chujjjjjj a da a a aa a a a  a ive lost my mid a a a a a");
+                return;
+            }
+            notesManager.DeleteNote(selectedNote);
             NotesListBox.Items.Refresh();
         }
     }
