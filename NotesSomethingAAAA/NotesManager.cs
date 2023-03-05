@@ -42,7 +42,7 @@ namespace NotesSomethingAAAA
                 }
             }
         }
-
+         
         public void SaveNotes()
         {
             List<string> lines = new List<string>();
