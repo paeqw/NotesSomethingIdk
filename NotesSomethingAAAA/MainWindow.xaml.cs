@@ -58,6 +58,9 @@ namespace NotesSomethingAAAA
             NotesListBox.Items.Refresh();
         }
 
+        public void refresh() {
+            NotesListBox.Items.Refresh();
+        }
         private void deleteButton_Click(object sender, RoutedEventArgs e)
         {
             Note? selectedNote = NotesListBox.SelectedItem as Note;

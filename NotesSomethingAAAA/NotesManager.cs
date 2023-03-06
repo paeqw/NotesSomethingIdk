@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -17,9 +18,9 @@ namespace NotesSomethingAAAA
         }
         
 
-        public Note AddNote(string title, string content)
+        public Note AddNote(string title, string content, DateTime DueDate, bool isDone)
         {
-            Note newNote = new Note(title, content);
+            Note newNote = new Note(title, content, DueDate, isDone);
             Notes.Add(newNote);
             SaveNotes();
             return newNote;
@@ -33,11 +34,11 @@ namespace NotesSomethingAAAA
                 foreach (string line in lines)
                 {
                     string[] parts = line.Split('|');
-                    Note note = new Note()
-                    {
-                        Title = parts[0],
-                        Content = parts[1]
-                    };
+                    var Title = parts[0];
+                    var Content = parts[1];
+                    DateTime DueDate = Convert.ToDateTime(parts[2]);
+                    bool isDone = Convert.ToBoolean(parts[3]);
+                    Note note = new Note(Title, Content, DueDate, isDone);
                     Notes.Add(note);
                 }
             }
@@ -48,7 +49,8 @@ namespace NotesSomethingAAAA
             List<string> lines = new List<string>();
             foreach (Note note in Notes)
             {
-                string line = note.Title + "|" + note.Content;
+                string line = $"{note.Title}|{note.Content}|{note.DueDate}|{note.isDone}";
+
                 lines.Add(line);
             }
             File.WriteAllLines(notesFilePath, lines);
@@ -60,10 +62,12 @@ namespace NotesSomethingAAAA
             SaveNotes();
         }
 
-        public void ModifyNote(Note note, string newTitle,string newContent)
+        public void ModifyNote(Note note, string newTitle, string newContent,DateTime date, bool done)
         {
             note.Title = newTitle;
             note.Content = newContent;
+            note.DueDate = date;
+            note.isDone = done;
             SaveNotes();
         }
 

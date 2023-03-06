@@ -15,12 +15,17 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Label Content="Title:" />
-        <TextBox Grid.Row="1" x:Name="titleTextBox" />
+        <TextBox Grid.Row="1" x:Name="titleTextBox" Margin="0,31,549,357" Grid.RowSpan="3" />
 
-        <Label Grid.Row="2" Content="Content:" />
-        <TextBox Grid.Row="3" x:Name="contentTextBox" />
+        <Label Content="Title:" Margin="0,5,500,383" Grid.RowSpan="4" />
+        <TextBox Grid.Row="3" x:Name="contentTextBox" Margin="0,94,0,0" />
 
         <Button Grid.Row="4" Content="Save" Click="SaveButton_Click" />
+        <Label Grid.Row="3" Content="Content:" Margin="0,68,0,276" />
+        <CheckBox x:Name="IsDoneCheck" Content="IsDone" HorizontalAlignment="Left" Margin="717,11,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+        <Label Content="Due Date" HorizontalAlignment="Center" Margin="0,5,0,0" Grid.Row="3" VerticalAlignment="Top" Width="242"/>
+        <TextBox x:Name="DateText" HorizontalAlignment="Center" Margin="0,31,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" Height="26" TextChanged="TextBox_TextChanged"/>
+        <TextBlock x:Name="daysLeft" HorizontalAlignment="Left" Margin="538,31,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.446,-0.436" Width="102" Height="26" Text=""/>
+        <Label Content="Days until deadline" HorizontalAlignment="Left" Margin="538,5,0,0" VerticalAlignment="Top" Grid.RowSpan="4" Height="26" Width="141"/>
     </Grid>
 </Window>
