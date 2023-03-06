@@ -22,7 +22,7 @@ namespace NotesSomethingAAAA
             IsDoneCheck.IsChecked = note.isDone;
             DateText.Text = note.DueDate.ToString();
             DateTime data = DateTime.Now;
-            daysLeft.Text = Convert.ToString(note.DueDate - data);
+            daysLeft.Text = Convert.ToString(Math.Round((note.DueDate - data).TotalDays,2));
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -31,11 +31,15 @@ namespace NotesSomethingAAAA
             bool ischecked = IsDoneCheck.IsChecked == true ? true : false;
             if (note == null)
             {
+                daysLeft.Visibility = Visibility.Collapsed;
+                daysLeftLabel.Visibility = Visibility.Collapsed;
                 notesManager.AddNote(titleTextBox.Text, contentTextBox.Text, Convert.ToDateTime(DateText.Text), ischecked);
                 this.Close();
             }
             else
             {
+                daysLeft.Visibility = Visibility.Visible;
+                daysLeftLabel.Visibility = Visibility.Visible;
                 notesManager.ModifyNote(note, titleTextBox.Text, contentTextBox.Text, Convert.ToDateTime(DateText.Text), ischecked);
                 this.Close();
             }

@@ -5,17 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotesSomethingAAAA"
         mc:Ignorable="d"
-        Title="AddEditNoteWindow" Height="450" Width="800">
+        Title="AddEditNoteWindow" Height="450" Width="800"
+    xmlns:System="clr-namespace:System;assembly=System.Runtime">
+    <Window.Resources>
+        <System:Double x:Key="LabelFontSize">18</System:Double>
+        <System:Double x:Key="TextBoxFontSize">17</System:Double>
+    </Window.Resources>
     <Grid>
-        <Label Content="Title:" Margin="0,0,536,403" />
-        <TextBox Grid.Row="3" x:Name="contentTextBox" Margin="0,94,0,0" />
-        <Label Content="Content:" Margin="0,71,664,320" />
-        <Button Content="Save" Click="SaveButton_Click" Height="20" Margin="0,414,0,0" />
-        <CheckBox x:Name="IsDoneCheck" Content="IsDone" HorizontalAlignment="Left" Margin="718,36,0,0" Grid.Row="3" VerticalAlignment="Top"/>
-        <Label Content="Due Date" HorizontalAlignment="Center" VerticalAlignment="Top" Width="242" Height="31"/>
-        <TextBox x:Name="DateText" HorizontalAlignment="Center" Margin="0,31,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" Height="30" TextChanged="TextBox_TextChanged"/>
-        <TextBlock x:Name="daysLeft" HorizontalAlignment="Left" Margin="538,31,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.446,-0.436" Width="102" Height="26" Text=""/>
-        <Label Content="Days until deadline" HorizontalAlignment="Left" Margin="538,5,0,0" VerticalAlignment="Top" Grid.RowSpan="4" Height="26" Width="141"/>
-        <TextBox x:Name="titleTextBox" Margin="0,31,549,373" Height="30" />
+        <Label x:Name="labelTitle" Content="Title:" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="{DynamicResource LabelFontSize}"/>
+        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Width="250" Margin="0,34,0,0" VerticalAlignment="Top" Height="30" FontSize="{DynamicResource TextBoxFontSize}"/>
+
+        <Label Content="Content:" Margin="0,64,0,0" Height="Auto" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="{Binding FontSize, ElementName=labelTitle}" />
+        <TextBox x:Name="contentTextBox" Margin="15,120,15,80" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="{Binding FontSize, ElementName=titleTextBox}" />
+
+        <Button Content="Save" Click="SaveButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="10,10,10,10" Margin="0,0,0,20" />
+        <CheckBox x:Name="IsDoneCheck" Content="IsDone" HorizontalAlignment="Left" Margin="693,54,0,0" VerticalAlignment="Top" FontSize="15" Padding="4,-2,0,0" Width="97"/>
+
+        <Label x:Name="labelDueDate" Content="Due Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="270,0,0,0" FontSize="{Binding FontSize, ElementName=labelTitle}"/>
+        <TextBox x:Name="DateText" HorizontalAlignment="Left" Margin="270,33.94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="30" TextChanged="TextBox_TextChanged" FontSize="{Binding FontSize, ElementName=titleTextBox}"/>
+
+        <Label x:Name="daysLeftLabel" Content="Days until deadline" HorizontalAlignment="Left" Margin="538,0,0,0" VerticalAlignment="Top" FontSize="{Binding FontSize, ElementName=labelTitle}"/>
+        <TextBlock x:Name="daysLeft" HorizontalAlignment="Left" Margin="538,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.446,-0.436" Height="30" Text="" Width="150" FontSize="{Binding FontSize, ElementName=titleTextBox}"/>
+
     </Grid>
 </Window>
