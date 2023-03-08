@@ -16,7 +16,7 @@
         <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Width="250" Margin="0,34,0,0" VerticalAlignment="Top" Height="30" FontSize="{DynamicResource TextBoxFontSize}"/>
 
         <Label Content="Content:" Margin="0,64,0,0" Height="Auto" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="{Binding FontSize, ElementName=labelTitle}" />
-        <TextBox x:Name="contentTextBox" Margin="15,120,15,80" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="{Binding FontSize, ElementName=titleTextBox}" />
+        <TextBox x:Name="contentTextBox" Margin="15,120,15,80" AcceptsReturn="True" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="{Binding FontSize, ElementName=titleTextBox}" />
 
         <Button Content="Save" Click="SaveButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="10,10,10,10" Margin="0,0,0,20" />
         <CheckBox x:Name="IsDoneCheck" Content="IsDone" HorizontalAlignment="Left" Margin="693,54,0,0" VerticalAlignment="Top" FontSize="15" Padding="4,-2,0,0" Width="97"/>
