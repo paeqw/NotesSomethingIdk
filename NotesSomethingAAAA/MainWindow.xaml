@@ -6,7 +6,12 @@
         xmlns:local="clr-namespace:NotesSomethingAAAA"
         mc:Ignorable="d"
         Title="NotesApp" Height="525" Width="525">
+    <Window.Resources>
+        <local:DaysLeftToColorConverter x:Key="DaysLeftToColorConverter.cs" />
+    </Window.Resources>
+
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -27,6 +32,19 @@
             <Button x:Name="modifyButton" Content="Modify" Margin="5,5,5,5" Click="modifyButton_Click"/>
             <Button x:Name="deleteButton" Content="Delete selected note" Margin="5,5,5,5" Click="deleteButton_Click" />
         </StackPanel>
-        <ListBox x:Name="NotesListBox" Grid.Row="1" Margin="5" SelectionChanged="NotesListBox_SelectionChanged" />
+        <ListBox x:Name="NotesListBox" SelectionChanged="NotesListBox_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding DueDate, StringFormat='{}{0:d/M/yyyy} '}" FontWeight="Bold" Width="80"/>
+                        <TextBlock Text="{Binding Title}" FontWeight="Bold" Width="200"/>
+                        <TextBlock Text="{Binding Content}" TextTrimming="CharacterEllipsis" Width="250"/>
+                        <TextBlock Text="{Binding DaysLeft}" Width="100" TextAlignment="Right" Foreground="{Binding DaysLeft, Converter={StaticResource DaysLeftToColorConverter}}" FontWeight="Bold"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
     </Grid>
 </Window>
+

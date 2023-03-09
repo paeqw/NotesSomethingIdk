@@ -22,7 +22,7 @@ namespace NotesSomethingAAAA
             IsDoneCheck.IsChecked = note.isDone;
             DateText.Text = note.DueDate.ToString();
             DateTime data = DateTime.Now;
-            daysLeft.Text = Convert.ToString(Math.Round((note.DueDate - data).TotalDays,2));
+            daysLeft.Text = Convert.ToString(Math.Round((note.DueDate - data).TotalDays, 2));
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
