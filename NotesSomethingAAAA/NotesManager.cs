@@ -20,9 +20,9 @@ namespace NotesSomethingAAAA
         }
 
 
-        public Note AddNote(string title, string content, DateTime DueDate, bool isDone)
+        public Note AddNote(string title, string content, DateTime creation, DateTime DueDate, bool isDone)
         {
-            Note newNote = new Note(title, content, DueDate, isDone);
+            Note newNote = new Note(title, content, creation, DueDate, isDone);
             Notes.Add(newNote);
             SaveNotes();
             return newNote;
@@ -38,6 +38,7 @@ namespace NotesSomethingAAAA
                     .Select(noteXml => new Note(
                         noteXml.Element("title").Value,
                         noteXml.Element("content").Value,
+                        DateTime.Parse(noteXml.Element("creation").Value),
                         DateTime.Parse(noteXml.Element("dueDate").Value),
                         bool.Parse(noteXml.Element("isDone").Value)
                     ))
@@ -50,7 +51,8 @@ namespace NotesSomethingAAAA
             var notesXml = new XElement("notes",
                 Notes.Select(note => new XElement("note",
                     new XElement("title", note.Title),
-                    new XElement("content", note.Content),
+                    new XElement("content", note.Content), 
+                    new XElement("creation", note.CreationDate),
                     new XElement("dueDate", note.DueDate),
                     new XElement("isDone", note.isDone)
                 ))

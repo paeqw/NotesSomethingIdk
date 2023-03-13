@@ -16,11 +16,11 @@ namespace NotesSomethingAAAA
             Title = "";
         }
 
-        public Note(string title, string content, DateTime duedate, bool done)
+        public Note(string title, string content, DateTime creation, DateTime duedate, bool done)
         {
             Title = title;
             Content = content;
-            CreationDate = DateTime.Now;
+            CreationDate = creation;
             DueDate = duedate;
             isDone = done;
         }

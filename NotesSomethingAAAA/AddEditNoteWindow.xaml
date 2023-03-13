@@ -13,7 +13,7 @@
     </Window.Resources>
     <Grid>
         <Label x:Name="labelTitle" Content="Title:" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="{DynamicResource LabelFontSize}"/>
-        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Width="250" Margin="0,34,0,0" VerticalAlignment="Top" Height="30" FontSize="{DynamicResource TextBoxFontSize}"/>
+        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Width="250" Margin="5,34,0,0" VerticalAlignment="Top" Height="30" FontSize="{DynamicResource TextBoxFontSize}"/>
 
         <Label Content="Content:" Margin="0,64,0,0" Height="Auto" Width="Auto" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="{Binding FontSize, ElementName=labelTitle}" />
         <TextBox x:Name="contentTextBox" Margin="15,120,15,80" AcceptsReturn="True" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="{Binding FontSize, ElementName=titleTextBox}" />
@@ -22,10 +22,10 @@
         <CheckBox x:Name="IsDoneCheck" Content="IsDone" HorizontalAlignment="Left" Margin="693,54,0,0" VerticalAlignment="Top" FontSize="15" Padding="4,-2,0,0" Width="97"/>
 
         <Label x:Name="labelDueDate" Content="Due Date" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="270,0,0,0" FontSize="{Binding FontSize, ElementName=labelTitle}"/>
-        <TextBox x:Name="DateText" HorizontalAlignment="Left" Margin="270,33.94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="250" Height="30" TextChanged="TextBox_TextChanged" FontSize="{Binding FontSize, ElementName=titleTextBox}"/>
+        <DatePicker x:Name="DateText" HorizontalAlignment="Left" Margin="270,33.94,0,0" Width="250" Height="30" VerticalAlignment="Top" FontSize="{Binding FontSize, ElementName=titleTextBox}" RenderTransformOrigin="0.388,0.329"/>
 
         <Label x:Name="daysLeftLabel" Content="Days until deadline" HorizontalAlignment="Left" Margin="538,0,0,0" VerticalAlignment="Top" FontSize="{Binding FontSize, ElementName=labelTitle}"/>
         <TextBlock x:Name="daysLeft" HorizontalAlignment="Left" Margin="538,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.446,-0.436" Height="30" Text="" Width="150" FontSize="{Binding FontSize, ElementName=titleTextBox}"/>
-
+        
     </Grid>
 </Window>

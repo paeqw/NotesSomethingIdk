@@ -12,17 +12,18 @@ namespace NotesSomethingAAAA
         {
             InitializeComponent();
             this.notesManager = notesManager;
+
         }
 
         public void SetNote(Note note)
         {
+            
             this.note = note;
             titleTextBox.Text = note.Title;
             contentTextBox.Text = note.Content;
             IsDoneCheck.IsChecked = note.isDone;
             DateText.Text = note.DueDate.ToString();
-            DateTime data = DateTime.Now;
-            daysLeft.Text = Convert.ToString(Math.Round((note.DueDate - data).TotalDays, 2));
+            daysLeft.Text = Convert.ToString(Math.Round((note.DueDate - note.CreationDate).TotalDays, 2));
         }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -33,7 +34,7 @@ namespace NotesSomethingAAAA
             {
                 daysLeft.Visibility = Visibility.Collapsed;
                 daysLeftLabel.Visibility = Visibility.Collapsed;
-                notesManager.AddNote(titleTextBox.Text, contentTextBox.Text, Convert.ToDateTime(DateText.Text), ischecked);
+                notesManager.AddNote(titleTextBox.Text, contentTextBox.Text, DateTime.Now, Convert.ToDateTime(DateText.Text), ischecked);
                 this.Close();
             }
             else
